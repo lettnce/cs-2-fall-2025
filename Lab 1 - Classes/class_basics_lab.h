@@ -93,7 +93,7 @@ public:
 // ===================================
 // Part 3: Course Class (Level 3)
 // ===================================
-class Course {
+/*class Course {
 private:
     // TODO: Declare private attributes: course name, enrollment count, static array of 30 student names
     string title;
@@ -114,4 +114,4 @@ public:
     void dropStudent() {};
     // TODO: Method to clear all enrolled students
     void clearRoster() {};
-};
+};*/
