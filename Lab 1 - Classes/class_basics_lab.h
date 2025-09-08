@@ -1,6 +1,7 @@
 // class_basics_lab.h
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 using namespace std;
 
@@ -13,15 +14,17 @@ private:
     double length, width;
 public:
     // TODO: Constructor to initialize length and width
-    Rectangle(int l, int w) : length(l), width(w) {}
+    Rectangle(double l, double w) : length(l), width(w) {}
     // TODO: Method to return area
-    double area() {return length * width;}
+    double getArea() {return length * width;}
     // TODO: Method to return perimeter
-    double perimeter() {return (2*length)+(2*width);}
+    double getPerimeter() {return (2*length)+(2*width);}
     // TODO: Method to print rectangle details
     void print() {
-        cout << "Area: " << area() << endl
-             << "Perimeter: " << perimeter() << endl;
+        cout << fixed << setprecision(1)
+             << "Rectangle: " << length << " X " << width << endl
+             << "Area: " << getArea() << endl
+             << "Perimeter: " << getPerimeter() << endl;
     };
     // TODO: Method to check if rectangle is a square
     bool isSquare() {
@@ -50,14 +53,16 @@ private:
     double gpa;
 public:
     // TODO: Default constructor
-    Student() : name("Ghost"), major("Unknown"), gpa(0.0) {} 
+    // Student() : name("Ghost"), major("Unknown"), gpa(0.0) {} 
     // TODO: Parameterized constructor
-    Student(string n, double g, string m) : name(n), gpa(g), major(m) {}
+    Student(string n = "unknown", double g = 0.0, string m = "unknown") : name(n), gpa(g), major(m) {} //default constructor can be declared in reg one
     // TODO: Method to print transcript
     void printTranscript() {
-        cout << "Name: " << name << endl
+        cout << endl
+             << "Name: " << name << endl
+             << "GPA: " << gpa << endl   
              << "Major: " << major << endl
-             << "GPA: " << gpa << endl;
+             << "Honors: " << (checkHonors() ? "Yes" : "No") << endl;
     };
     // TODO: Method to check honors status
     bool checkHonors() {
@@ -96,14 +101,14 @@ public:
 class Course {
 private:
     // TODO: Declare private attributes: course name, enrollment count, static array of 30 student names
-    string title;
-    int count;
+    string courseName;
+    int enrolled;
     string student_names[30];
 public:
     // TODO: Constructor that sets course name and initializes enrollment to 0
     Course (string t) {
-        title = t;
-        count = 0;
+        courseName = t;
+        enrolled = 0;
         for (int i(0); i < 30; i++) {
             student_names[i] = "empty";
         }
@@ -120,7 +125,8 @@ public:
     // TODO: Method to print course name and all enrolled students
     void printRoster() {
         cout << endl
-             << "Course: " << title << endl
+             << "Enrolled: " << getEnrollmentCount() << endl
+             << "Course: " << courseName << endl
              << "Students: ";
         for (int i(0); i < 30; i++) {
             if (student_names[i] != "empty") {
@@ -130,9 +136,14 @@ public:
         cout << endl;
     }; 
     // TODO: Method to return enrollment count
-    int enrollCount(int x) {
-        x = count;
-        return x;
+    int getEnrollmentCount() {
+        enrolled = 0;
+        for (int i(0); i < 30; i++) {
+            if (student_names[i] != "empty") {
+                enrolled++;
+            }
+        }
+        return enrolled;
     };
     // TODO: Method to check if a student is enrolled
     bool isEnrolled(string n) {
