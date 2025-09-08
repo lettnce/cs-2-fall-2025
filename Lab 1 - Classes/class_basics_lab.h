@@ -125,8 +125,8 @@ public:
     // TODO: Method to print course name and all enrolled students
     void printRoster() {
         cout << endl
-             << "Enrolled: " << getEnrollmentCount() << endl
              << "Course: " << courseName << endl
+             << "Enrolled: " << getEnrollmentCount() << endl
              << "Students: ";
         for (int i(0); i < 30; i++) {
             if (student_names[i] != "empty") {
